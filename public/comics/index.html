@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Archive : Comics</title>
+    
+</head>
+<body>
+
+    <div class="page">
+        <aside id="sidebar">
+            <ul id="issue-list"></ul>
+        </aside>
+
+        <main id="main-content">
+            <header id="mobile-header">
+                <button id="mobile-variant-btn" class="nav-btn" style="display: none;">🎨</button>
+                <h2 id="mobile-issue-title"></h2>
+                <p id="mobile-issue-artists"></p>
+            </header>
+
+            <button id="sidebar-btn" class="nav-btn">»</button>
+
+            <div id="viewer-header">
+                <h2 id="issue-title"></h2>
+                <p id="issue-artists"></p>
+            </div>
+
+            <div id="viewer">
+                <div id="loading-indicator">Loading...</div>
+                <img id="comic-page" src="" alt="Comic Page">
+            </div>
+
+            <div id="controls">
+                <div class="zoom-controls">
+                    <button id="zoom-out-btn" class="nav-btn">-</button>
+                    <span id="zoom-indicator"></span>
+                    <button id="zoom-in-btn" class="nav-btn">+</button>
+                </div>
+
+                <button id="variant-btn" style="display: none;">Cycle Variant Covers</button>
+                <span id="controls-spacer"></span>
+
+                <div class="page-controls">
+                    <button id="prev-btn" class="nav-btn"><</button>
+                    <select id="issue-selector"></select>
+                    <select id="page-jumper"></select>
+                    <button id="next-btn" class="nav-btn">></button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="comic-data.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
