@@ -1,5 +1,5 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false,
+  "trailingSlash": true,
   "$schema": "https://openapi.vercel.sh/vercel.json"
 }
