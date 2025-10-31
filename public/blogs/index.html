@@ -21,7 +21,7 @@
         async function loadTemplatesAndBuildPage() {
             try {
                 // 1. fetch the templates.html file from the server.
-                const response = await fetch('/src/blogs/template_blocks.html');
+                const response = await fetch('src/blogs/template_blocks.html');
                 if (!response.ok) { // check if the file was found
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
