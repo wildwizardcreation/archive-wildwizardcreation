@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Archive ˸ Home</title>
+    
+    <!-- <link rel="stylesheet" type="text/css" href="/global_style.css"> -->
+    <link rel="stylesheet" type="text/css" href="blog-preview-styles.css">
+</head>
+<body>
+    <main id="accounts-container">
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadTemplatesAndBuildPage();
+        });
+
+        // this 'async' function allows us to use 'await' to handle the file loading.
+        async function loadTemplatesAndBuildPage() {
+            try {
+                // 1. fetch the templates.html file from the server.
+                const response = await fetch('/src/blogs/template_blocks.html');
+                if (!response.ok) { // check if the file was found
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const templateText = await response.text();
+
+                // 2. parse the text into a mini-document we can search.
+                const parser = new DOMParser();
+                const templateDoc = parser.parseFromString(templateText, 'text/html');
+
+                // 3. find our specific templates within that mini-document by their IDs.
+                const accountCardTemplate = templateDoc.getElementById('account-card-template');
+                const bannerTemplate = templateDoc.getElementById('banner-template');
+                const blogPreview = templateDoc.getElementById('blog-preview-template');
+                
+                if (!accountCardTemplate || !bannerTemplate || !blogPreview) {
+                    console.error('Could not find required templates in templates.html');
+                    return;
+                }
+
+                // 4. now that we have the templates, we can call the function to build the page.
+                buildAccountCards(accountCardTemplate, bannerTemplate, blogPreview);
+
+            } catch (error) {
+                console.error('Failed to load templates or build page:', error);
+            }
+        }
+
+        function buildAccountCards(accountCardTemplate, bannerTemplate, blogPreview) {
+            // our data is now more complete, including the description for the card
+            const accounts = [
+                {
+                    id: 'wonderous-wizard',
+                    title: 'AGAIN!?!?!?',
+                    description: `22 - he/him - wiz
+                    wildwizardcreation.com
+                    my lovely wife!!! @orbweavermutt`,
+                    header: 'https://64.media.tumblr.com/d3840998384624657841b17425f2f016/f1727b266ace4005-6e/s2048x3072/4d032f27afa6c5a53eb6de782d2880ee592eb43e.png',
+                    pfp: 'https://64.media.tumblr.com/465e2537d040ec20a73c4788e0bd7275/90ecd27d4b54fb4e-f0/s96x96u_c1/5fe2e50bed702afa07dbd323a41dd4b23574e971.pnj',
+                    
+                    blogBackground: '#263329',
+                    blogSecondary: '#feedd3',
+                    blogText: '#feedd3',
+
+                    inboxTitle: 'speak your truth',
+
+                    startDate: 'August 25th, 2025',
+                    endDate: 'Present',
+                    archived: true
+                },
+                {
+                    id: 'wildwizardcreation-1',
+                    title: 'title',
+                    description: `description`,
+                    header: 'headerSrc',
+                    pfp: 'https://wildwizardcreation.com/assets/wizard_pfp1.jpg',
+                    
+                    blogBackground: '#color',
+                    blogSecondary: '#color',
+                    blogText: '#color',
+
+                    inboxTitle: 'speak your truth',
+
+                    startDate: 'date',
+                    endDate: 'date',
+                    archived: false
+                },
+                {
+                    id: 'wildestwizard',
+                    title: 'title',
+                    description: `description`,
+                    header: 'headerSrc',
+                    pfp: 'https://wildwizardcreation.com/assets/wizard_pfp2.png',
+                    
+                    blogBackground: '#color',
+                    blogSecondary: '#color',
+                    blogText: '#color',
+
+                    inboxTitle: 'speak your truth',
+
+                    startDate: 'date',
+                    endDate: 'date',
+                    archived: false
+                },
+                {
+                    id: 'wildwizardcreation-2',
+                    title: 'title',
+                    description: `description`,
+                    header: 'headerSrc',
+                    pfp: 'https://wildwizardcreation.com/assets/wizard_pfp3.jpg',
+                    
+                    blogBackground: '#color',
+                    blogSecondary: '#color',
+                    blogText: '#color',
+
+                    inboxTitle: 'speak your truth',
+
+                    startDate: 'date',
+                    endDate: 'date',
+                    archived: false
+                },
+                {
+                    id: 'wildwizardest',
+                    title: 'title',
+                    description: `description`,
+                    header: 'headerSrc',
+                    pfp: 'https://wildwizardcreation.com/assets/wizard_pfp4.png',
+                    
+                    blogBackground: '#color',
+                    blogSecondary: '#color',
+                    blogText: '#color',
+
+                    inboxTitle: 'speak your truth',
+
+                    startDate: 'date',
+                    endDate: 'date',
+                    archived: false
+                },
+                {
+                    id: '2wild2wizard',
+                    title: 'WHY. WON\'T. YOU. DIE!!!!',
+                    description: `| the freak from your dni |
+                    frequently known as wizard, wiz, the realistic gtws porn guy, jackass, annoying bastard, and more.`,
+                    header: 'https://pbs.twimg.com/profile_banners/1437288516141174786/1741321903/1500x500',
+                    pfp: 'https://wildwizardcreation.com/assets/wizard_pfp5.png',
+                    
+                    blogBackground: '#556362',
+                    blogSecondary: '#e8e8e8',
+                    blogText: '#9eaab4',
+
+                    inboxTitle: 'speak your truth',
+
+                    startDate: 'date',
+                    endDate: 'date',
+                    archived: false
+                },
+                {
+                    id: 'wizardcreation',
+                    title: '6th time\'s the charm',
+                    description: `surely!
+                    he/him - wizard - 22`,
+                    header: 'headerSrc',
+                    pfp: 'https://wildwizardcreation.com/assets/wizard_pfp6.jpg',
+                    
+                    blogBackground: '#color',
+                    blogSecondary: '#color',
+                    blogText: '#color',
+
+                    inboxTitle: 'speak your truth',
+
+                    startDate: 'date',
+                    endDate: 'date',
+                    archived: false
+                },
+                {
+                    id: 'wovensimulacrum',
+                    title: 'title',
+                    description: `description`,
+                    header: 'headerSrc',
+                    pfp: 'https://wildwizardcreation.com/assets/wizard_pfp7.png',
+                    
+                    blogBackground: '#color',
+                    blogSecondary: '#color',
+                    blogText: '#color',
+
+                    inboxTitle: 'speak your truth',
+
+                    startDate: 'date',
+                    endDate: 'date',
+                    archived: false
+                }
+                // info template
+                // {
+                //     id: 'blogname',
+                //     title: 'title',
+                //     description: `description`,
+                //     header: 'headerSrc',
+                //     pfp: 'pfpSrc',
+                    
+                //     blogBackground: '#color',
+                //     blogSecondary: '#color',
+                //     blogText: '#color',
+
+                //     inboxTitle: 'speak your truth',
+
+                //     startDate: 'date',
+                //     endDate: 'date',
+                //     archived: false
+                // }
+            ];
+
+            const container = document.getElementById('accounts-container');
+            if (!container) return; // safety check
+
+            accounts.forEach(account => {
+                // clone the main account card template
+                const cardClone = blogPreview.content.cloneNode(true);
+
+                // find the elements inside the clone to modify
+                const blogLink = cardClone.querySelector('#blog-link');
+                const cardDiv = cardClone.querySelector('.blog-preview');
+                const blogHeader = cardClone.querySelector('.blog-header img');
+                const blogAvatar = cardClone.querySelector('.pfp img');
+                const blogTitle = cardClone.querySelector('.info h1');
+                const blogName = cardClone.querySelector('.info h2');
+                const blogDescription = cardClone.querySelector('.info p');
+                
+                // populate the card with data from the array
+                blogName.textContent = `@${ account.id}`;
+                cardDiv.id = account.id;
+                blogLink.href = account.id;
+
+                blogHeader.src = account.header;
+                blogAvatar.src = account.pfp;
+
+                blogTitle.textContent = account.title;
+                blogDescription.textContent = account.description;
+
+                // css vars
+                if (account.blogBackground) {
+                    cardDiv.style.setProperty('--blog-background', account.blogBackground);
+                }
+
+                if (account.blogSecondary) {
+                    cardDiv.style.setProperty('--blog-secondary', account.blogSecondary);
+                }
+
+                if (account.blogText) {
+                    cardDiv.style.setProperty('--blog-text', account.blogText);
+                }
+
+                // archived check
+                if (account.archived === false) {
+                    cardDiv.classList.add('is-not-archived');
+                }
+
+                // clone the banner template for the card
+                const bannerClone = bannerTemplate.content.cloneNode(true);
+                const textSpan = bannerClone.querySelector('span');
+                textSpan.textContent = `Active: ${account.startDate} — ${account.endDate}`;
+
+                // prepend the banner to the new card
+                cardDiv.prepend(bannerClone);
+
+                // append the fully constructed card to the page
+                container.appendChild(cardClone);
+            });
+        }
+    </script>
+
+</body>
+</html>
