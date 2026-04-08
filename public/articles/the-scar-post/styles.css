@@ -1,0 +1,272 @@
+body {
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.5;
+    color: #333;
+    background-color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+
+h2 {
+    display: inline;
+    margin: 0 10px;
+}
+
+h3 {}
+
+#post-container {
+    width: 75%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.container {
+    max-width: 750px;
+    margin: 0 auto;
+    margin-bottom: 1.5em;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+iframe {
+    aspect-ratio: 16 / 9;
+}
+
+.disclaimer {
+    padding: 10px 25px;
+}
+
+article.post {
+    border: 1px solid #6c757d;
+    margin: 1em auto;
+}
+
+.post-meta {
+    padding: 20px;
+    border-top: 1px solid #ccc;
+    font: 11px 'Lucida Grande', Arial, sans-serif;
+    color: #888;
+}
+
+.post-meta p {
+    margin: 4px 0;
+    color: #6c757d;
+    font-size: 1em;
+}
+
+.tags-container {
+    margin-top: 15px;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 4px 10px;
+    margin: 2px 5px 2px 0;
+    border-radius: 15px;
+    font-size: 0.85em;
+    text-decoration: none;
+}
+
+.archive-post {
+    padding: 10px 25px;
+}
+
+.user-info {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.posted,
+.reblogged {
+    color: #888;
+    font-size: 1em;
+    margin-top: 2px;
+}
+
+.op-block,
+.reblog-block {
+    margin-bottom: 15px;
+}
+
+.reblog-block {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.ask-block {
+    background-color: #f8f9fa;
+    padding: 15px;
+    margin: 15px 0;
+    border-left: 3px solid #ced4da;
+}
+
+.asker,
+.answerer {
+    color: #495057;
+
+    span {
+        font-weight: bold;
+    }
+}
+
+.question,
+.answer-content {
+    margin-top: 5px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+div.image-row-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 0px;
+
+    overflow: clip;
+}
+
+div.image-row-2+div.image-row-2,
+div.image-row-2:has(+ div.image-row-2) {
+    img {
+        aspect-ratio: 1;
+        margin-top: 5px;
+    }
+
+    grid-column-gap: 5px;
+}
+
+div.image-row-2 img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+
+div.image-row-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 0px;
+
+    overflow: clip;
+}
+
+div.image-row-3 img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+
+/* read more */
+details {
+    width: 100%;
+}
+
+details summary {
+    list-style: none;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary::before {
+  content: " ";
+  width: 20px;
+  height: 20px;
+  background-image: url('data:image/svg+xml,<svg viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="%23000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><rect width="16" height="16" id="icon-bound" fill="none"></rect><polygon points="5,8 10,3 10,13"></polygon></g></svg>');
+  background-size: cover;
+  background-position: center;
+  font-size: 0.8em;
+  /* transition: transform 0.2s ease-in-out; */
+  display: inline-block;
+  position: absolute;
+  right: 0;
+}
+
+details[open] summary::before {
+  transform: rotate(-90deg);
+}
+
+ul.poll-options li {
+    margin: 5px 0;
+    list-style: none;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+blockquote {
+    border-left: 3px solid #ddd;
+    padding-left: 1em;
+    color: #555;
+    margin-left: 0;
+}
+
+.chat-style {
+    font-family: Courier, monospace;
+}
+
+.quirky-style {
+    font-family: "Comic Sans MS", "Chalkboard SE", "Marker Felt", sans-serif;
+}
+
+.keep-reading {
+
+    position: relative;
+    width: 100%;
+
+    &::before,
+    &::after {
+        color: #ced4da;
+    }
+
+    &::after {
+        content: "Keep reading";
+        display: block;
+        background-color: white;
+        text-align: center;
+        width: fit-content;
+        position: relative;
+        margin: 0 auto;
+        padding: 0 15px;
+        height: 100%;
+        z-index: 100;
+    }
+
+    &::before {
+        content: " ";
+        border-bottom: 1px solid currentColor;
+        /*         background-color: wheat; */
+        display: block;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: -10px;
+        pointer-events: none;
+        z-index: 1;
+
+    }
+}
